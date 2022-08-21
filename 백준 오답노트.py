@@ -8,5 +8,33 @@ name,number,age = map(str,input().split())
 print(name,number,age)
 
 #10926번 준하 놀람 표함
-print(input()+"??!")     #input()을 print()안에 넣어줘서 바로 사용이 가능하다.
+print(input()+"??!")     #input()을 print()안에 넣어줘서 바로 사용이 가능하다
+
+#25083 새싹 만들기
+def leaf():
+   print('         ,r\'\"7')
+   print('r`-_   ,\'  ,/')
+   print(' \. \". L_r\'')
+   print('   `~\/')
+   print('      |')
+   print('      |')
+leaf()
+
+
+#2884 알람시간 맞추기 -45분
+H,M=map(int,input().split())
+if H>=1:
+    if M>=45:
+        print(H,M-45)
+    if M<45:
+        print((H-1),60+(M-45))
+if H==0:
+    if M>=45:
+        print(H,M-45)
+    if M<45:
+        H=3
+        print(H,60+(M-45))
+
+
+
 
