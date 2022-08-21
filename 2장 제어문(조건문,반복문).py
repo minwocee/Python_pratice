@@ -257,3 +257,33 @@ while plat!=ansnum:
 '''
 #[활용3 초등학생을 위한 산술 계산 프로그램(단 틀리면 학습을 중단 한다.)]
 
+answer=-1
+playerinput=-1
+count=-1
+while answer==playerinput:
+    x=random.randint(1,100)
+    y=random.randint(1,100)
+    answer=x+y
+    print(f"{x} + {y} = ?")
+    playerinput=int(input("알맞은 정답을 입력 하시오: "))
+    count+=1
+print("연속 정답 횟수: %d"%count)
+
+
+#[활용4 비밀번호가 맞을때 까지 반복을 하는 프로그램 제작]
+truepasswd= "helloworld"
+inputpasswd=" "
+
+while truepasswd!=inputpasswd:
+    inputpasswd=input("알맞은 비밀번호를 입력하시오: ")
+print("정답입니다. 로그인 성공")
+
+
+#[활용5 for를 중첩으로 사용해 크리스마스 트리를 만들어 보자]
+k=10
+for i in range(1,9):
+    print("_"*k,end="")
+    print("x"*(2*i-1),end="")
+    print("_"*k)
+    k-=1
+    
