@@ -22,19 +22,26 @@ leaf()
 
 
 #2884 알람시간 맞추기 -45분
-H,M=map(int,input().split())
-if H>=1:
-    if M>=45:
-        print(H,M-45)
-    if M<45:
-        print((H-1),60+(M-45))
-if H==0:
-    if M>=45:
-        print(H,M-45)
-    if M<45:
-        H=3
-        print(H,60+(M-45))
+H, M = map(int, input().split())
 
+if M < 45 :	# 분단위가 45분보다 작을 때 
+    if H == 0 :	# 0 시이면
+        H = 23
+        M += 60
+    else :	# 0시가 아니면 (0시보다 크면)
+        H -= 1	#내가 이걸 깜빡해서 많이 틀림
+        M += 60        
+print(H, M-45)
 
+#2525 오븐 알람시간 맞추기
+A,B=map(int,input().split())
+C=int(input())
+A+=(B+C)//60    #먼저 시침을 넣어주기
+B=(B+C)%60    #먼저 분침을 넣어주기
+if A>23:
+    A-=24
+print(A,B)    
+
+#
 
 
