@@ -42,6 +42,41 @@ if A>23:
     A-=24
 print(A,B)    
 
-#
+#15552번 sys 사용(좀더 빠르게 컴파일 가능,거의 사용 안함)
+import sys
+ 
+inp = int(input())
+for i in range(inp):
+        a,b = map(int, sys.stdin.readline().split())
+        print(a+b)
+
+#2439 별찍는 문제
+N=int(input())
+
+for i in range(1,N+1):
+    print(" "*(N-i),end="")
+    print("*"*i)
+
+#10871번 리스트 생성하고 넣어주기
+N, X = map(int, input().split())
+A = list(map(int, input().split()))    #이런식으로도 리스트 생성에 넣어주기까지 바로 가능하구나 몰랏네
+for i in range(N):
+    if A[i] < X:
+        print(A[i], end=" ")
+
+#10952번 break를 사용해라
+while True:
+    a, b = map(int, input().split())
+    if a == 0 and b == 0:
+        break
+    print(a+b)
+
+#10951번 try-except 활용  (오류가 발생하면 종료하는 시스템)
+while True:
+    try:
+        a, b = map(int, input().split())
+    except:    #오류가 생기면 종료한다
+        break    #break대신 print("error")라고 적으면 오류메세지 출력하고 다시 실행한다.
+    print(a+b)
 
 
