@@ -79,4 +79,53 @@ while True:
         break    #break대신 print("error")라고 적으면 오류메세지 출력하고 다시 실행한다.
     print(a+b)
 
+#1110 일의자리,십의자리 분리하는 문제(좀 어려웠음)
+N=int(input()) #0~99 사이의 수를 입력 받음 나눗셈 10을 해서 십의 자리와 일으 ㅣ자리를 구분하자
+k=N    #변하는 수
+q=0    #나중에 출력 해야 하는 시도 횟수
+while True:
+    result = k//10 + k%10 # 2+6=8 완성  6+8=14 완성
+    if result>=10:
+       result=result-(result//10)*10
+    k=result + (k%10)*10  #8+60= 68 완성 14+4=18 완성
+    q+=1
+    if N==k:
+        break    
+print(q)
+#2+6=8 -->68
+#6+8=14 -->84
+#8+4=12 -->42
+#4+2=6 -->26
 
+#10181번 배열에서의 최솟값과 최댓값
+cnt = int(input())    #이 문장이 코드에 영향을 미치지는 않는다
+numbers = list(map(int, input().split()))
+print(min(numbers),max(numbers))     #배열내에서의 최대,최솟값을 구해주는 함수 작성
+
+#또다른 방법2
+cnt = int(input())
+numbers = list(map(int, input().split()))
+numbers.sort()    #오름차순으로 정렬
+print(numbers[0], numbers[-1])    #첫번째, 마지막 인덱스를 출력
+
+#또다른 방법3
+cnt = int(input())
+numbers = list(map(int, input().split()))    #배열을 스페이스 간격으로 계속 받아줌(엔터 치면 초기화)
+max = numbers[0]    #배열의 첫번째 값을 넣어준다.
+min = numbers[0]
+
+for i in numbers[1:]:    #배열의 2번째 인덱스 부터 비교를 시작한다
+    if i > max:
+        max = i
+    elif i < min:
+        min = i
+print(min,max)
+
+#2562번 최댓값구하기
+numbers = []
+for _ in range(9):
+    i = int(input())
+    numbers.append(i)
+    
+print(max(numbers))
+print(numbers.index(max(numbers))+1)
