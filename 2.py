@@ -1,14 +1,10 @@
-#점수를 입력받고 출력
+N=int(input())
+mylist=[]
+mylist=list(map(int,input().split()))    #리스트에서 스페이스 간격으로 넣어줄때는 이렇게 넣어 보자
 
-scorelist=[]
-while True:
-        print("학생들의 점수를 입력 하세요:  ")
-        scorelist.append(input())
-        
-        if scorelist[-1]=='멈춰':
-            del scorelist[-1]
-            break
+k=max(mylist)
 
-scorelist.sort()
-print(f"최고 득점자의 점수는 {scorelist[-1]} 입니다."  )
-print(f"최저 득점자의 점수는 {scorelist[0]} 입니다." )
+for i in range(N):
+    mylist[i]=(mylist[i]/k)*100
+
+print(sum(mylist)/len(mylist))

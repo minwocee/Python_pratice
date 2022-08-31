@@ -129,3 +129,24 @@ for _ in range(9):
     
 print(max(numbers))
 print(numbers.index(max(numbers))+1)
+
+
+#3052번 나머지의 중복 개수 맞추기
+arr = []
+for i in range(10):
+    n = int(input())
+    arr.append(n % 42)
+arr = set(arr)    #쉽게 말해서 중복되는 숫자가 없이 집합을 만들어줌
+print(len(arr))    # 그 집합의 길이가 곧 겹치치 않는 원소의 개수와 같다.
+
+#1546번 조작한 점수의 평균을 구하기
+N=int(input())
+mylist=[]
+mylist=list(map(int,input().split()))    #리스트에서 스페이스 간격으로 넣어줄때는 이렇게 넣어 보자
+
+k=max(mylist)
+
+for i in range(N):
+    mylist[i]=(mylist[i]/k)*100
+
+print(sum(mylist)/len(mylist))
