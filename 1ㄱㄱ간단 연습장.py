@@ -1,18 +1,3 @@
-#교양 파이썬 22.09.06 (1주차) 응용문제1
-from turtle import *
-color('red', 'yellow')    #테두리는 빨간색, 속은 노랑색으로 채운다.
-
-begin_fill()
-
-while True:
-    forward(100)
-    left(170)
-    if abs(pos())<1:    #abs(): 절대값 만들어 주는 함수, pos():포지션, 현재 위치 좌표
-        break
-end_fill()
-
-
-#집 만들기 코드
 import turtle
 turtle.shape("turtle")
 print("20180876")
