@@ -1,31 +1,112 @@
-import turtle
-turtle.shape("turtle")
-print("20180876")
-turtle.forward(150)
-turtle.right(60)
-turtle.forward(50)
-turtle.right(120)
-turtle.forward(50)
-turtle.left(90)
-turtle.forward(70)
-turtle.right(90)
-turtle.forward(100)
-turtle.right(90)
-turtle.forward(70)
-turtle.left(90)
-turtle.forward(50)
-turtle.right(120)
-turtle.forward(50)
-turtle.up()
-turtle.goto(80,-60)
-turtle.down()
-turtle.right(60)
-turtle.forward(20)
-turtle.right(90)
-turtle.forward(20)
-turtle.right(90)
-turtle.forward(20)
-turtle.right(90)
-turtle.forward(20)
-turtle.right(90)
-print("천민우")
+#2장 온라인 강의 정리
+
+#예약어 키워드 목록을 출력 해보저
+import keyword    
+print(keyword.kwlist)    #이미 공식적으로 사용하고 있는 키워드 리스트를 출력한다.
+
+import builtins
+print(dir(builtins))    #이미 공식적으로 사용하고 있는 내장 함수명을 출력 해준다.(dir:디렉터리의 약자), abs부터 내장함수 이름들임
+
+#True=100    (예약어를 변수명으로 사용해서 에러발생)
+#6eleven=24    (숫자가 변수의 이름 맨앞에 들어가므로 오류가 발생한다.)
+
+#간단한 삼격형의 넓이 구하는 방법
+myheight=10
+mybase=4
+myarea = mybase * myheight
+print("삼각형의 넓이는?: ",myheight)
+
+#None 자료형이란?
+no=None
+print(no)
+print(type(no))    #type()함수: 괄호에 들어간 변수명의 자료형 타입을 반환한다.
+
+#bool형 자료형 이란?
+b1=True
+b2= False
+print(type(b1))
+print(type(b2))
+#b3=true    #오류 발생(T를 대문자로 써야 예약어로써의 기능이 실행됨)
+#print(type(b3))     
+
+#실수 자료형 이란?
+a=123
+a=-178
+a=0    #가장 마지막 변수 초기화 한것이 적용 된다.
+print(a)
+print(type(a))
+
+팔진수=0o177    
+print(int(팔진수))   #8진수-->10진수로 형변환 완료후 출력함
+
+십육진수=0x8ff
+print(int(십육진수))    #16진수-->10진수로 형변환 완료후 출력
+
+#a=09  (오류 발생, 그냥 9로 대입해야 함)
+
+부동소수점형변수=1.23e-2 #1.23 * 0.01 이랑 같음
+
+e=2+3j    #실수+허수인 복소수e,  코딩시에는 복소수i 가 아닌 복소수j 로 사용한다.
+print(e.real)    #실수부 출력
+print(e.imag)    #허수부 출력
+print(type(e))    #class complex 출력
+
+#문자열(string)자료형의 표현법(큰따옴표와 작은 따옴표)
+print("작은 따옴표 '를 출력")    #작은따옴표를 출력
+print('작은 따옴표 "를 출력')    #큰따옴표를 출력
+print("역슬래시를 이용해 \" 를 출력 해보자")
+
+print("보안의 \n3요소")    #\n: 줄바꿈(엔터)
+print("""기밀성
+무결성
+가용성""")    #큰따옴표 3개를 연속으로 사용해 3줄을 각각 출력해준다.
+
+#이스케이프 문자의 다양한 활용법(시험떄 다시 확인해보자)
+print('hello, \nworld!')
+print('hello, \tworld!')
+print('hello, \\world!')
+print('hello, /world!')
+print('welcome to, my\'world!')
+print('\"\"')
+print('hello, \rworld!')    #캐리지 리턴뒤에붙은 문자열이 가장 앞으로 옴(기존 문자랑 겹칠시 인덱스 부분만큼 대체함)
+print('12345 \r678')    
+print('hello, \fworld!')
+print('hello, \aworld!')
+print('hello, \bworld!')
+print('hello, \vworld!')
+print('8진수 -> \141')    #알파벳 a가 해당
+print('16진수-> \x61')    #알파벳 a가 해당
+print('유니코드 : \N{LINE FEED}')    #line feed: 줄바꿈 하라는 의미
+print('16비트 16진수로 유니코드 표현: \u0061')    #알파벳 a가 해당
+print('32비트 16진수로 유니코드 표현: \u00000061')    #알파벳 a가 해당
+
+
+#문자열 포멧팅(자릿수 설정하기)
+print("본인의 나이는 %d 이다" % 24)
+print("본인의 이름은 %s 이다."%'천민우')
+print("내 전공은 %s 이고 학번은 %d 이다."%('컴퓨터 공학과',20180876))
+
+print("현재 태풍이 올 확률은 %d %%이다."%(100))    # %% 입력시 %문자 그대로 출력이 가능하다.
+print("내 수명은 %5.2f 이다." % 85.1234)    # %5.2f 의 의미: 총 5자리의 수를 출력하는데 그중 2자리는 소수점 아래로 사용한다
+print("나의 키는 %6.3f 이다." % 177.123456)    # %6.3f : 실수중 6자리를 사용하는데 그중 3자리는 소수점 아래표기시 활용한다.
+print("코드네임 %03d 이다." % 7)    #03d의 의미: 3자리 까지 정수를 표현하는데 만약 빈자리가 생기면 0으로 채워라는 의미
+print("00년생의 주민번호 %06d 이다." % 908)    #06d의 의미: 6자리 정수를 출력하는데 빈자리가 생기면 0으로 채워라
+
+print("오늘은 몇일?: %s"%7)    #뒤에오는 정수를 문자열로 형변환 해서 들어간다.
+print("오늘의 강수량은 ?: %s"%11.7)    #뒤에오는 정수를 문자열로 형변환 해서 들어간다.
+
+print("%20s" % "컴퓨터 공학과")    #오른쪽에 붙어서 출력
+print("%-20s" % "컴퓨터 공학과")    #왼쪽에 붙어서 출력
+print("원주율 값: ㅣ%10.5fㅣ"%3.141592175)    #앞에 공백 3개 두고 출력된다.
+print("원주율 값: ㅣ%-10.5fㅣ"%3.141592175)    #왼쪽에 붙어서 공백이 없어진다.(소수점 자리 뒤에 공백 3칸 추가됨)
+print("원주율 값: ㅣ%0.5fㅣ" % 3.141592175)    #정수 부분은 유지하고, 소수점 아래 5자리 까지만 출력(소수점 슬라이스)
+
+#문자열 연결하기
+print("안녕"+"하세요")
+print("반갑습니다","교수님","출력합니다~")
+print(("hello"+"world")*3)
+
+
+
+
+
