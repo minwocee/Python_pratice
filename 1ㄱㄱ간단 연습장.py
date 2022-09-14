@@ -1,30 +1,66 @@
+#인덱싱의 기초
 
-from time import sleep
-import turtle
-turtle.shape("turtle")
+from operator import index
 
-#1문제 출제 반지름을 입력받고 
-r1=float(input("반지름: "))
-circle=r1*r1*3.14
-print(circle)
-turtle.circle(r1)
-sleep(3)
-turtle.clear
-#2.사각형을 입력하고 그림 그리기
-s1=float(input("가로를 입력 하시오: "))
-s2=float(input("세로를 입력 하시오: "))
-print(s1*s2)
 
-turtle.reset
-turtle.forward(s1)
-turtle.right(90)
-turtle.forward(s2)
-turtle.right(90)
-turtle.forward(s1)
-turtle.right(90)
-turtle.forward(s2)
-sleep(100)
+mystr="Computer Programing"    #문자열형 변수를 넣어준다.(이때 첫번째 글자는 인덱스 0번 마지막 글자는 인덱스 19번or -1번 )
+"""0~19번 인덱스 번호 == -17~-1 인덱스 번호와 같다"""
 
+print(mystr[0],mystr[1],mystr[2],mystr[3],mystr[4],mystr[5])    #각 인덱스의 글자 C o m p u t 가 출력 된다.(이때 쉼표를 사용해서 공백을 추가)) 
+
+print(mystr[0]+mystr[1]+mystr[2]+mystr[3]+mystr[4]+mystr[5])     #+를 사용해 문자을 붙여주므로 Comput 가 출력이 된다.
+
+print(mystr[0:8])    #인덱스 슬라이싱, 인덱스 0번부터 7번까지 출력해준다. (이때 마지막 범위인 인덱스[8]번은 제외인것을 기억 하자)
+
+print(mystr[:8])    #8번째 인덱스 전까지 문자열을 출력하는 의미
+
+print(mystr[0:])    #0번째 인덱스부터 끝까지 모두 출력 한다는 의미 이다.
+
+print(mystr[:])    #범위가 다 생략되어 있으면 모든 글자를 출력 한다.
+
+#문자열 함수 사용법
+"""
+capitalize(): 괄호안 단어의 첫글자를 대문자로 변환하혀 반환
+count(x): x가 문자열 안에서 몇번 등장하는지 개수를 세고 반환
+find(x): x가 문자열 안에서 처음 나오는 위치를 찾아서 반환 한다.(만약 없으면 -1을 반환한다.) 이때 인덱스 번호로 말하니 주의(0부터 시작 함)
+rfind(x): x를 문자열 뒤에서 부터 찾아 반환 한다.
+index(x): x가 문자열 안에서 처음 나오는 위치를 반환 한다.(만약 없으면 오류가 발생)
+lower(): 문자열의 알파벳을 모두 소문자로 치환
+upper(): 문자열의 알파벳을 모두 대문자로 치환
+
+"""
+
+k1="hello World"
+
+print(k1.capitalize())    #첫 글자 h 가 H 로 변환후 출력 됨
+
+print(k1.count("o"))     #알파벳 o 가 2번 사용됨
+
+print(k1.find("W"))    #W의 위치인 인덱스 번호 6번이 출력 됨
+
+print(k1.rfind("l"))     #뒤에서 부터 알파벳 l을 찾고 인덱스 번호를 출력 한다.
+
+print(k1.index("W"))    #W의 위치인 인덱스 번호를 찾는다.(find와 기능은 같다.)
+
+print(k1.upper())     #문자열을 모두 대문자로 바꿔주고 출력
+
+print(k1.lower())    #문자열을 모두 소문자로 바꿔주고 출력
+
+
+"""     또다른 문자열 함수들
+replace(a,b): 문자열에서 a를 찾아 b로 변경해준다.
+strip(): 문자열 좌우의 공백 문자를 없앤 것을 반환한다.
+lstrip(): 문자열 왼쪽의 공백 문자를 없앤것을 반환한다.
+rstrip(): 문자열 오른쪽의 공백 문자를 없앤 것을 반환한다.
+split(x): x를 기준으로 문자열을 여러개로 나눈다.
+splitlines(): 개행을 기준으로 문자열을 여러개로 나눈다.
+join(strs): 시퀸스(strs)에 포함된 문자열들을 이 문자열을 구분자로 연결한다.
+isalpha(): 문자열이 문자(알파벳, 한글 등 )으로만 되어 있는지 검사 한다.
+isnumeric(): 문자열이 숫자로만 구성 되어 있는지 검사한다.
+isalnum(): 문자열이 문자와 숫자로만 구성 되어 있는지 검사한다.
+format(): 데이터를 양식화 한다.
+
+"""
 
 
 
