@@ -106,7 +106,32 @@ turtle.right(90)
 turtle.forward(s2)
 sleep(100)
 
+"""    9/27 실습 문제 풀이"""
+for i in range(0,5,1):
+    month=int(input("현재 몇월 인가요?"))    #12개월을 3개로 나누어 상반기 중반기 하반기로 분류
+    if month>=1 and month<4:
+        print("상반기 입니다.")
+    elif month>=4 and month<8:
+        print("중반기 입니다")
+    elif month>=8 and month<=12:
+        print("하반기 입니다.")
+    else:
+        print("1부터 12까지의 수를 입력하세요...")
 
+a,b,c,d,e=0,0,0,0,0
+for i in range(10):
+    size=int(input("사이즈르 입력 하시오: "))
+    if size<=85:
+        a+=1
+    elif size<=90:
+        b+=1
+    elif size<=95:
+        c+=1
+    elif size<=100:
+        d+=1
+    elif size>100:
+        e+=1
+print(f"{a}  {b}  {c}  {d}  {e}")
 
 
 
