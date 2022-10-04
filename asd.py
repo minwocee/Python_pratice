@@ -1,16 +1,44 @@
-#약수의 개수를 구하고 약수를 출력해주는 프로그램을 만들자(좀 까다롭지만 유용)
+size=list(range(10))
 
-while True:
-    num=int(input("정수를 입력 하시오(0은 종료키): "))
-    if not num:
-        break    #정수가 아니면 반복문을 탈출하는듯
-    if num<0:
-        print("양의 정수를 입력하시오")
-        continue    #다시 처음으로 돌아간다.
-    count=0    #약수의 개수를 세어주는 변수를 선언 한다.
-    for i in range(1,num+1):
-        if num%i==0:
-            print('{0:5}'.format(i),end=' ')    #앞에 4칸을 띄워줌(마지막 인덱스인 [4]에 i가 들어가고 나머지는 공백으로 채움)
-            count+=1
-    print()
-    print("{0}의 약수의 개수: {1}개 입니다.\n".format(num,count))
+for i in range(10):
+    num=int(input("치수를 입력 하시오: "))
+
+    if num<=85:
+        size.append("XS")
+    elif num<=90:
+        size.append("S")
+    elif num<=95:
+        size.append("M")
+    elif num<=100:
+        size.append("XL")
+    else:
+        size.append("XXL")
+print(size.count("XS"),size.count("S"),size.count("M"),size.count("XL"),size.count("XXL"))
+
+
+
+
+
+
+
+
+
+
+
+
+
+# for i in range(10):    #10회 반복한다.
+#     id=input("새 아이디: ")
+#     ps=input("새 비번: ")
+    
+#     if id=="성결대학교" and ps=="파이데이아1":
+#         print("접속을 환영 합니다.")
+#         break
+    
+
+#     print("아이디와 비번을 정확히 입력하세요")
+
+# N=int(input("출력을 원하는 단을 인력 하시오: "))
+
+# for i in range(1,10):
+#     print(f"{N} * {i} = {N*i}", end="   ")
