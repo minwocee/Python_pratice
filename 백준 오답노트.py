@@ -188,5 +188,24 @@ for i in range(1,M):    #M=11 1,2,3,4...11
 
 print(a[-1])
    
+#12034번 문제풀이(김인천씨의 식료품 가게)
 
+T=int(input())    #테스트 케이스가 들어가는 자리
+Total=[0]    #마지막 결과물들을 담아주는 배열
 
+for _ in range(T):
+    P=int(input())    #할인된 가격표의 개수
+    mlist=list(map(int,input().split()))    #리스트 크기를 할당하고 생성 완료
+    
+    for i in range(P):    #정상가 요소들을 제거하는 과정
+        if(mlist[i]*(4/3) in mlist):
+            mlist.remove(mlist[i]*(4/3))
+    Total.append(mlist)
+
+del(Total[0])    #첫번째 요소인 정수 0을 지운다.
+
+for k in range(T):
+    print(f"Case #{k+1}",end=": ")
+    for _ in range(len(list(Total[k]))):    #리스트 속의 리스트를 추출하기위해 사용
+        print(Total[k][_],end=" ")
+    print()
