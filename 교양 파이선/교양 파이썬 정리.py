@@ -133,6 +133,87 @@ for i in range(10):
         e+=1
 print(f"{a}  {b}  {c}  {d}  {e}")
 
+#옷 사이즈 측정하는 프로그램
+size=list(range(10))
+
+for i in range(10):
+    num=int(input("치수를 입력 하시오: "))
+
+    if num<=85:
+        size.append("XS")
+    elif num<=90:
+        size.append("S")
+    elif num<=95:
+        size.append("M")
+    elif num<=100:
+        size.append("XL")
+    else:
+        size.append("XXL")
+print(size.count("XS"),size.count("S"),size.count("M"),size.count("XL"),size.count("XXL"))
+
+
+#삼각형 그리는 터틀 그래픽
+import turtle
+
+def Triangle_draw(x,y):
+    turtle.goto(x,0)
+    turtle.goto(x/2,y)
+    turtle.goto(0,0)
+    
+def Triangel_area(x,y):
+    return (x*y)/2
+
+turtle.shape("turtle")
+x=int(input("삼각형의 밑변의 길이를 입력하시오: "))
+y=int(input("삼각형의 높이를 입력하시오: "))
+
+Triangle_draw(x,y)
+print("삼각형의 넓이: ",Triangel_area(x,y))
+
+#홀짝 판별하는 시스템
+def pzn(x):
+    return x%2
+
+N=int(input("짝수-홀수 판별을 원하는 수를 입력 하세요: "))
+
+if pzn(N)==0:    
+    print("짝수 입니다")
+
+if pzn(N)==1:
+    print("홀수 입니다.")
+
+# 2개의 정수와 연산자를 입력받는 프로그램을 만들기
+def fadd(x,y):
+    sum=x+y
+    return sum
+
+def fsub(x,y):
+    sum=x-y
+    return sum
+
+def fmult(x,y):
+    sum=x*y
+    return sum
+
+def fdiv(x,y):
+    sum=x/y
+    return sum
+
+x=int(input("첫번째 숫자를 입력하시오: "))
+y=int(input("두번째 숫자를 입력하시오: "))
+
+operate=input("연산사를 입력 하시오(예시: +,-,*,/): ")
+
+if(operate=="+"):
+    print(fadd(x,y))
+if(operate=="-"):
+    print(fsub(x,y))
+if(operate=="*"):
+    print(fmult(x,y)) 
+if(operate=="/"):
+    print(fdiv(x,y))
+
+
 
 
 
