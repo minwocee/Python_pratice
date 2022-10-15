@@ -258,3 +258,24 @@ for i in mlist:
 
 N=input()
 print(ord(N))
+
+
+
+#10809 알파벳 검색
+mlist=[-1]*26    #정답 저장소, 이러면 모든 요소가 -1인 26리스트가 생성된다.(입력 받은 문자열에 해당 알파벳이 없으면 -1 출력해야 하기 떄문)
+
+abc=list("a b c d e f g h i j k l m n o p q r s t u v w x y z".split()) #알파벳 사전 생성(총 26개)
+
+pinput=input()    #사용자가 입력한 문자열 
+
+for i in range(26):     #알파벳 개수 만큼 반복
+    if abc[i] in pinput:     #만약 알파벳 사전에서 존재하는 단어가 있는지 검색(a~z)
+        if mlist[i]==-1:    #만약 알파벳이 있고, 정답 저장소 내용이 -1이면(한번도 안들어 가면) 
+            mlist[i]=pinput.index(abc[i])     #해당글자의 인덱스를 저장
+        else:    
+            continue    # 만약 baekjoon 처럼 o는 글자가 2개이기때문에 중복을 방지 해주는 역할을 한다.
+        
+
+for i in range(26):
+    print(mlist[i],end=" ")
+
