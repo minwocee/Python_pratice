@@ -279,3 +279,6 @@ for i in range(26):     #알파벳 개수 만큼 반복
 for i in range(26):
     print(mlist[i],end=" ")
 
+#chr(65)~chr(90): A~Z까지 대문자 알파벳
+#chr(97)~ chr(122): a~z까지 소문자 알파벳
+#ord(x)는 x에 숫자를 넣으면 알파벳을 반환

@@ -133,6 +133,7 @@ for i in range(10):
         e+=1
 print(f"{a}  {b}  {c}  {d}  {e}")
 
+
 #옷 사이즈 측정하는 프로그램
 size=list(range(10))
 
