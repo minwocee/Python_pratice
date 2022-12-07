@@ -1,0 +1,35 @@
+#얼리스타퍼,모델저장기능 탑재(특정조건만족시 정지)
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from sklearn.model_selection import train_test_split
+import pandas as pd
+from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping
+
+early_stopping_callback = EarlyStopping(monitor='val_loss', patience=20)
+checkpointer = ModelCheckpoint(filepath=modelpath, monitor='val_loss',verbose=0, save_best_only=True)
+
+!git clone https://github.com/taehojo/data.git
+
+df = pd.read_csv('./data/wine.csv', header=None)
+
+x= df.iloc[:,0:12]
+y= df.iloc[:,12]
+
+x_train, x_test ,y_train,y_test = train_test_split(x,y,test_size=0.2, shuffle=True)
+
+model = Sequential()
+model.add(Dense(30,input_dim=12,activation='relu'))
+model.add(Dense(12,activation='relu'))
+model.add(Dense(8,activation='relu'))
+model.add(Dense(1,activation='sigmoid'))
+model.summary()
+
+model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+modelpath = "./data/model/Ch14-4-bestmodel.hdf5"
+checkpointer = ModelCheckpoint(filepath=modelpath, verbose=1)
+
+history = model.fit(x_train, y_train, epochs=2000, batch_size=500, validation_split=0.25, verbose=1, callbacks=[early_stopping_callback,checkpointer])
+
+score= model.evaluate(x_test,y_test)
+print('Test accurary:', score[1])

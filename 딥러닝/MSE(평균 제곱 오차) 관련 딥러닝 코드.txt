@@ -1,0 +1,27 @@
+#평균 제곱 오차이용
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+
+import numpy as np
+
+fake_a = 3    #가상의 예측선 설정하는 과정
+fake_b = 76
+
+X=np.array([2,4,6,8])
+y=np.array([81,93,91,97])
+
+def predict(x):
+  return fake_a*x+fake_b
+
+predict_result=[]
+
+for i in range(len(X)):
+  predict_result.append(predict(X[i]))
+  print("공부한시간=%.f, 시험점수=%.f, 예측점수=%.f"%(X[i], y[i], predict(X[i])))
+
+n=len(X)
+def mse(y,y_pred):
+  return sum(((y-y_pred)**2)/n)
+
+print("평균 제곱 오차: "+ str(mse(y,predict_result)))

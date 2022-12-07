@@ -1,0 +1,46 @@
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint  #어릴스탑핑: 특종 조건 만족시 정지, 모델 체크포인트: 에폭끝나고 저장
+from sklearn.model_selection import train_test_split
+
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+import numpy as np
+
+!git clone https://github.com/taehojo/data.git
+
+df = pd.read_csv('./data/house_train.csv')
+
+df = pd.get_dummies(df) #원-핫 인코딩(표에서 문자열 부분을 숫자로 변ㅎㅇ)
+
+df = df.fillna(df.mean())   #비어있는 부분은 평균값으로 채워줌
+
+df_corr = df.corr()      #결과에 미치는 용향도 분속
+
+df_corr_sort = df_corr.sort_values('SalePrice', ascending = False)     #영향수치 내림차순 출력
+
+cols_train = ['OverallQual', 'GrLivArea', 'GarageCars', 'GarageArea', 'TotalBsmtSF']     #리스트에 핵심 속성 5가지 저장
+
+X_train_pre = df[cols_train]     #1460 * 5 의 행렬 생성후 저장해줌(x의 데이터, 속성)
+
+y = df['SalePrice'].values    #SalePrice의 열의 값들을 저장 (클래스)
+
+X_train, X_test, y_train, y_test = train_test_split(X_train_pre, y,test_size=0.2)    #학습셋과 테스트셋 구분해주기
+
+model = Sequential()
+model.add(Dense(10, input_dim=X_train.shape[1], activation='relu'))
+model.add(Dense(30, activation = 'relu'))
+model.add(Dense(40, activation = 'relu'))
+model.add(Dense(1))
+model.summary()
+
+model.compile(optimizer='adam', loss='mean_squared_error')
+
+early_stopping_callback = EarlyStopping(monitor = 'val_loss', patience=20)
+
+modelpath = "./data/model/Ch15-house.hdf5"
+
+checkpointer = ModelCheckpoint(filepath=modelpath, monitor='val_loss', verbose=0, save_best_only=True)
+
+history = model.fit(X_train, y_train, validation_split=0.25, epochs=2000, batch_size=32, callbacks=[early_stopping_callback, checkpointer])

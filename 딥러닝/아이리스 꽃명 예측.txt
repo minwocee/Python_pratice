@@ -1,0 +1,25 @@
+#꽃명(아이리스)의 품종 3가지 예측실행(다중 분류 문제 해결)
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+!git clone https://github.com/taehojo/data.github
+df = pd.read_csv('./data/iris3.csv')
+
+X= df.iloc[:,0:4]
+y= df.iloc[:,4]
+
+y = pd.get_dummies(y)
+
+model = Sequential()
+model.add(Dense(12, input_dim=4, activation='relu'))
+model.add(Dense(8,  activation='relu'))
+model.add(Dense(3,  activation='softmax'))
+model.summary()
+
+model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+history = model.fit(X,y,epochs=50, batch_size=5)

@@ -1,0 +1,25 @@
+#인디언들 당뇨 판별하는 딥러닝 코드
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+import pandas as pd    #판다 활용(행렬 관리 효율 좋음)
+
+!git clone https://github.com/taehojo/data.git
+
+df = pd.read_csv('./data/pima-indians-diabetes3.csv') #판다스는 알아서 콤마 제거하고 읽어오므로 delimite 사용 안해도 됨
+
+X= df.iloc[:,0:8]  #768명(전체행)의 속성(1~8까지) 슬라이싱후 넣어줌
+y= df.iloc[:,8]    #768명(전체행)의 당뇨판별(참, 거짓) 속성 9 
+df.head()#해당 데이터 필드 알아볼수있게 출력
+df["diabetes"].value_counts()    #참 거짓의 개수 출력(본 예시는 불균형함)
+df.describe()  #각 정보별 데이터 특징 출력
+df.corr()  #속성들이 결과에 얼마나 영향을 미치는지 표 출력
+
+model = Sequential()
+model.add(Dense(12, input_dim=8, activation='relu', name = 'Dense_1'))
+model.add(Dense(8,activation='relu', name='Dense_2'))
+model.add(Dense(1, activation='sigmoid', name='Dense_3'))
+model.summary()
+
+model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])  # 딥러닝 모델을 실행합니다.
+history=model.fit(X, y, epochs=100, batch_size=5)

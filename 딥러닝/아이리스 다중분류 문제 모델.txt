@@ -1,0 +1,25 @@
+#꽃명(아이리스)의 품종 3가지 예측실행(다중 분류 문제 해결)
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+import pandas as pd
+import seaborn as sns   #그래프 그릴떄 사용(여기는 사용 안함)
+import matplotlib.pyplot as plt    #그래프 그릴떄 사용(여기는 사용 안함)
+
+!git clone https://github.com/taehojo/data.github
+df = pd.read_csv('./data/iris3.csv')
+
+X= df.iloc[:,0:4]
+y= df.iloc[:,4]
+
+y = pd.get_dummies(y)#다중분류를 위해 열 Y의 열 개수가 2개 증가한다(품종이 3개이기 떄문) 
+
+model = Sequential()
+model.add(Dense(12, input_dim=4, activation='relu'))
+model.add(Dense(8,  activation='relu'))
+model.add(Dense(3,  activation='softmax'))   #다중분류를 위한 softmax 활용
+model.summary()
+
+model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])     #다중 분류를 위해 로스함수 categorical_crossentropy 사용
+
+history = model.fit(X,y,epochs=50, batch_size=5)

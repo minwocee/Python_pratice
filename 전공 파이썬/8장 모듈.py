@@ -118,7 +118,6 @@ print(random.sample(num_list,3), "무작위로 선택된 리스트 요소 3개")
 
 
 
-
 #                          <sys 모듈>
 """
 System specific parameters and functions 모듈
