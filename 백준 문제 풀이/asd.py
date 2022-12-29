@@ -19,11 +19,20 @@ cnt=0
 
 # #2019년부터 비교를 시작한다
 
-for i in range(2020, N+1,2):
-    cnt+=7
-    
+for i in range(2019, N+1):
+    if (i%400!=0 and i%100==0):
+        cnt+=2
+        print(i)
+        continue
+    elif (i%400==0) or (i%100!=0 and i%4==0) :
+        cnt+=2
+        print(i)
+        continue
+    else:
+        
+        cnt+=1
 
-print(cnt+2)
+print(cnt)
 
 #2019년2개 
 #2020년2개
