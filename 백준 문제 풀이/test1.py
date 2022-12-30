@@ -9,33 +9,45 @@ N= int(sys.stdin.readline()) # N 은 항상 홀수 이다.
 Table=[int(sys.stdin.readline()) for _ in range(N)]     # 리스트 만드는 함수 출력
 
 print('****************************************')
-# 산술 평균을 출력 (소수점 아래 첫번째 자리에서 반올림을 실행 한다.)
+# ***********************산술 평균을 출력 (소수점 아래 첫번째 자리에서 반올림을 실행 한다.)
 a=round(sum(Table)/N); print(a)
 
-# 중앙값을 출력 
+# *****************************중앙값을 출력 
 Table.sort()
 print(Table[int((N+1)/2)-1])
 
 
-# 최빈값을 출력
-T=list(set(Table))    # 순수하게 1개씩 어떤 값이 남아 있는지 알기 위해 출력 한다.
-T.sort()
-ans_list=[]
+# ***********************최빈값을 출력
 
-for a in T:
-    ans_list.append(Table.count(a))     # T리스트의 순서대로 해당 요소의 최빈값들이 들어가게 된다.
+"""
+1. 최빈값 수치가이 무엇인지 찾고
+2. 최빈값으로 설정된 정수를 찾는다 (2개이상시 )
+"""
 
-king = max(ans_list)    # 최대값 저장 소
+# 최빈값 찾기
+lis=list(set(Table))   # 사용한 요소 1개 1개들을 의미
+lis.sort()
+ans=[]
 
-if ans_list.count(king)==1:
-    print(T[ans_list.index(king)],'xxxxxx')    #최빈값이 하나 밖에 없으면 해당 요소 출력 한다.
-else: #여러개 존재시 두번쨰걸로 출력을 하는 방법
-    p = ans_list.index(king)     
-    print(T[ans_list.index(king, p,len(T))],'zzzz') 
+for k in lis:
+    ans.append(Table.count(k))    # 각요소들의 등장 횟수 기록
 
+king = max(ans)
 
+if ans.count(king)==1:    #최빈값이 하나만 나오는 경우
+    for k in lis:
+        if Table.count(k)==king:
+            print(k)     # 1개있을떄 출력
 
-# 범위를 출력
+elif ans.count(king)>=2:
+    at=0
+    for k in lis:
+        if Table.count(k)==king:
+            at+=1
+            if at==2:
+                print(k)    # 2개 있을떄 출력 완료
+
+# ************************범위를 출력
 if N==1:    #  요소가 하나 밖에 없을때
     print(0)
 else:
