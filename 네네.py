@@ -1,4 +1,5 @@
 
+
 """추가적인 팁 (파이썬에서 모든 경우의 수를 for문을 사용하지 않고 바로 만들어주는 함수 사용법)"""
 from itertools import permutations     #순열을 의미한다 (순서가 존재한다)
 from itertools import combinations      #조합을 의미한다 (순서가 없다 ABC CBA 같은걸로 본다)
