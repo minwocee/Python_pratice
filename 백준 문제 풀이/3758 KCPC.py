@@ -74,7 +74,6 @@ n+m이 입력받는 3번쨰줄 이하부터의 개수를 의미 하는것 같다
 1. 최종 점수가 같은 경우, 풀이를 제출한 횟수가 적은 팀의 순위가 높다. (트라이 횟수 적은팀) 
 2. 최종 점수도 같고 제출 횟수도 같은 경우, 마지막 제출 시간이 더 빠른 팀의 순위가 높다. (둘다 잘했을때 제출 시간이 우선 순위) 
 3. 동시에 제출되는 풀이는 없고, 모든 팀이 적어도 한 번은 풀이를 제출한다고 가정하라. 
-
 """
 
 import sys
@@ -84,21 +83,52 @@ T = int(sys.stdin.readline())    # 테스트셋의 개수
 for _ in range(T):
     team_many, test_many, myteam_id, log_many = map(int,sys.stdin.readline().split())    #팀수, 문제수, 내팀, 로그수
     log_list=[]
-
-    for _ in range(log_many):
-        log_list.append(list(map(int, sys.stdin.readline().split()))) #팀 문제 점수 
+    Table=[[0]*(test_many+2) for _ in range(team_many)]
+    #print(Table)    #[[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]]
     
-    #print(log_list)   #로그 리스트에 입력 완료됨
-print('')
+    for _ in range(log_many):    # 로그를 입력 받아 온다.
+        log_list.append(list(map(int, sys.stdin.readline().split()))) #팀, 문제, 점수 
+    
+    #2 3 30
 
+    #1번2번3번4번트라이횟수,마지막제출
+    #[[0, 0, 0, 0, 0, 0], 
+    # [0, 0, 0, 0, 0, 0], 
+    # [0, 0, 0, 0, 0, 0]]
+    indexcounter=0
+    for i in log_list:
+        Table[i[0]-1][i[1]-1]=max(i[2], Table[i[0]-1][i[1]-1])
+        Table[i[0]-1][test_many]=indexcounter #최종 제출의 인덱스 시간
+        indexcounter+=1
+        Table[i[0]-1][-1]+=1   #트라이횟수
+    
+    #print(Table)    #[[30, 40, 0, 0, 3, 3], [0, 0, 30, 0, 1, 1], [70, 0, 0, 0, 4, 1]] 출력됨
 
+    ans=[]
+    for _ in range(team_many):    # 리스트 슬라이싱을 통해서 총 점수를 계산
+        ans.append(sum(list(Table[_][0:test_many])))
 
-
-
-
-
+    #타겟값 탐지 시작
+    king=ans[myteam_id-1]
+    """
+    <동점자 풀이 규칙> 
+    1. 최종 점수가 같은 경우, 풀이를 제출한 횟수가 적은 팀의 순위가 높다. (트라이 횟수 적은팀) 
+    2. 최종 점수도 같고 제출 횟수도 같은 경우, 마지막 제출 시간이 더 빠른 팀의 순위가 높다. (둘다 잘했을때 제출 시간이 우선 순위) 
+    3. 동시에 제출되는 풀이는 없고, 모든 팀이 적어도 한 번은 풀이를 제출한다고 가정하라. 
+    """
+    # 점수 검색을 검사 한다.
+    score=1
+    for i in range(len(ans)):
+        if king < ans[i]:    #나보다크면 등수 1 내려감 발생
+            score+=1
+        elif king==ans[i]:    #만약 나와 똑같은 점수가 존재한다? 우선 순위 비교 하기
+            if Table[myteam_id-1][-1] > Table[i][-1]:   #우리 팀 트라이 횟수가 쟤네팀 트라이 횟수보다 높음
+                score+=1
+            elif Table[myteam_id-1][-1] == Table[i][-1]:    #트라이 횟수도 똑같음
+                if Table[myteam_id-1][-2] > Table[i][-2]:   #제출시간비교
+                    score+=1
+    print(score)
+    # 일단 적어두고 생각을 하자 너무 머리가 아픈 문제 였다...
 
 
     
-
-
