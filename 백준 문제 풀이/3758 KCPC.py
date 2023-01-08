@@ -128,7 +128,7 @@ for _ in range(T):
                 if Table[myteam_id-1][-2] > Table[i][-2]:   #제출시간비교
                     score+=1
     print(score)
-    # 일단 적어두고 생각을 하자 너무 머리가 아픈 문제 였다...
+    #너무 머리가 아픈 문제 였다...
 
 
     

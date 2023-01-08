@@ -108,7 +108,7 @@ for j in range(1,M):
 #1열 이후라인
 for j in range(1,M):#열 정보를 담당할 예정
     for i in range(1,M):#행 정보를 담당할 예정    
-        L[i][j]=L[i-1][j]
+        L[i][j]=L[i-1][j]#첫번쨰 열을 제외한 값들은, 모든행이 첫번쨰 행과 같다는 의미
 
 for i in L:
     print(*i)    #Unpaking operater * 을 의미, 이쁘게 출력할떄 사용 한다. [, ] 없애주는 역할
