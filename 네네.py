@@ -12,3 +12,7 @@ print(list(map(''.join, permutations(Table,1))))   #원소가 1개 사용하는 
 print(list(map(''.join, combinations(Table,3))))    #원소가 3개 사용하는 모든 경우의수 리스트
 print(list(map(''.join, combinations(Table,2))))   #원소가 2개 사용하는 모든 경우의수 리스트
 print(list(map(''.join, combinations(Table,1))))   #원소가 1개 사용하는 모든 경우의수 리스트
+
+# 넌이미 죽어있다 아직 꺠닫지 못했을 뿐 
+
+# 
