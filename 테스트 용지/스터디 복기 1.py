@@ -1,6 +1,9 @@
 import sys
 
-# 제로디비전 에러가 어디서 발생하는지 찾아보자
+T=int(sys.stdin.readline())
 
+for _ in range(T):
 
-0/3
+    행,열=map(int, sys.stdin.readline().split())    # 세로, 가로 길이 입력 받는다.
+
+    
