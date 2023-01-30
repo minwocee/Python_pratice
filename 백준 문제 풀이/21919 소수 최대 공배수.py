@@ -77,6 +77,12 @@ print(res)
 
 '''
 
+
+
+'''
+정답본
+
+
 import sys
 
 N= int(sys.stdin.readline())
@@ -102,4 +108,51 @@ if sum==1:
     print(-1)
 else:
     print(sum)
+
+'''
+
+
+import sys
+
+N=int(sys.stdin.readline())
+
+Table=set(list(map(int, sys.stdin.readline().split())))    #리스트 입력 받는다.
+
+
+# 이제 테이블의 max값 까지 에라토스테네스의 체를 구현하면 될것같다
+
+
+check_table=[False, False] + [True]*(max(Table)-1)
+
+for i in range(max(Table)+1):
+    if check_table[i]:
+        for k in range(2*i, max(Table)+1, i):
+            check_table[k]=False
+
+# 에라토스 테네스의 체 구현 완료
+
+
+ans=[]
+for t in Table:
+    if check_table[t]:
+        ans.append(t)
+
+
+if len(ans)==0:
+    print(-1)
+else:
+    #소수가 존재 하면
+    suj=1
+
+    for a in ans:
+        suj*=a
+
+    print(suj)
+
+
+
+
+
+
+
 
