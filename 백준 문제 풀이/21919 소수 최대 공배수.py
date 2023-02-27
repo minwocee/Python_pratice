@@ -114,6 +114,7 @@ else:
 
 import sys
 
+
 N=int(sys.stdin.readline())
 
 Table=set(list(map(int, sys.stdin.readline().split())))    #리스트 입력 받는다.
