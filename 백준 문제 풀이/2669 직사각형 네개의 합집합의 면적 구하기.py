@@ -29,7 +29,7 @@ xylist=[]
 for _ in range(4):
     xylist.append(list(map(int,sys.stdin.readline().split())))
 
-# 이로써 각 점의 좌표모음집 리스트가 완성이 되었다.
+# 이로써 각 점의 좌표모음집 리스트가 완성이 되었다. 
 # 이제 전체 배열을 0으로 초기화 한다.(101*101 크기의 리스트)
 anslist=[[False]*101 for _ in range(101)]
 
