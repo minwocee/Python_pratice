@@ -14,6 +14,8 @@ N=int(sys.stdin.readline())    # 자료의 개수를 입렫 받음
 
 Field=list(map(int, sys.stdin.readline().split()))
 '''
+
+'''
 # 기본적인 투 포인터 예제 문제를 작성해보자
 interval_sum=0
 cnt=0
@@ -32,3 +34,30 @@ for start in range(N):    # start 값은 for문을 활용해서 자동으로 올
     interval_sum-=Field[start]    # 구간합을 만족하거나, 구간합이 타겟보다 커진경우 start인덱스 실제 값을 빼준다.(이제 볼 필요가 없기 때문)
 
 print(cnt, '해당 구간의 개수')
+
+'''
+
+# 다른분의 블로그 참고: https://baby-ohgu.tistory.com/21
+
+import sys
+N=int(sys.stdin.readline())
+Data = list(map(int, sys.stdin.readline().split()))
+
+L, R = 0, N-1    # 양 끝단 값을 L,R에 설정한다.
+
+ans=Data[L] + Data[R]    # 양 끝값의 절대값의 합 (절대값이 0에 가까울수록 좋은것임)
+
+while L<R:
+    sub=Data[L]+Data[R]
+    #print(sub, 'sub의 값 출력')
+    #print(L,R,'좌우의 값 확인')
+    #print("****************")
+    if abs(ans)>abs(sub):    # 절대값을 비교했을 때 0에 더 가까운수 가 있다면 ans 업데이트
+        ans = sub    # 0에 가까운값을 업데이트 한다
+    
+    if sub<0:    # 음수값이 나온다면, 음수값을 한칸 줄여야 한다.
+        L+=1
+    else:    # 양수값이 나온다면, 양수값을 한칸 적게 옮긴다.
+        R-=1
+
+print(ans)
