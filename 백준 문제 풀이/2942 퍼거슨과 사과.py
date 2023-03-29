@@ -13,7 +13,7 @@
 import sys
 from math import gcd
 from math import sqrt
-R,G=map(int,sys.stdin.readline().split())  #빨강 초록사과
+R,G=map(int,sys.stdin.readline().split())  #빨강 초록사과 
 
 최대공약수=gcd(R,G)    #최대공약수 추출 완료
 

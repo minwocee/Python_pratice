@@ -49,7 +49,7 @@ ans=Data[L] + Data[R]    # 양 끝값의 절대값의 합 (절대값이 0에 가
 
 while L<R:
     sub=Data[L]+Data[R]
-    #print(sub, 'sub의 값 출력')
+    #print(sub, 'sub의 값 출력') 
     #print(L,R,'좌우의 값 확인')
     #print("****************")
     if abs(ans)>abs(sub):    # 절대값을 비교했을 때 0에 더 가까운수 가 있다면 ans 업데이트

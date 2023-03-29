@@ -1,4 +1,4 @@
-# https://www.acmicpc.net/problem/12018
+# https://www.acmicpc.net/problem/12018 
 
 '''
 딱봐도 그리디 문제 이다.

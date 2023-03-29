@@ -18,7 +18,7 @@ for _ in range(65,91):
 
 # 이제 앞,뒤의 번호를 더해서 %10 나머지 연산 해주면 끝이다.
 A=list(sys.stdin.readline().strip())    # 종민이 이름
-B=list(sys.stdin.readline().strip())    # 그녀 이름 받기
+B=list(sys.stdin.readline().strip())    # 그녀 이름 받기 
 
 arr=[]
 
@@ -37,6 +37,8 @@ while(True):
     
     #print(arr1,'arr1의 현재 연산 상태')
     arr=arr1
+    
+    # 종료 조건
     if len(arr)==2:
         print(str(arr[0])+str(arr[1]))
         exit(0)
