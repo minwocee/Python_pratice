@@ -11,6 +11,7 @@
 # 투포인터로도 구현이 가능할듯
 
 # 모르겠네
+
 '''
 의사코드
 ans_real=0
@@ -64,6 +65,7 @@ While end!=N-1
 
 '''
 
+'''
 # Dp를 쓰는 문제
 
 # Longenst increasing Sequence 문제 줄여서 LIS 문제 (DP 에서 자주 나오는 문제중 하나)
@@ -85,6 +87,46 @@ for start in range(N):   # 시작점 잡는 기준
             cnt+=1
             king=card[end]
     ans.append(cnt)        
-    
 print(max(ans))
+'''
+
+
+# 좋은 아이디어 생각남 의사코드로 적어봄
+
+# 1. 입력받은 리스트를 오름차순으로 정렬하고 Arr에 담는다.
+# 2. Arr에서 요소를 하나씩 반복문으로 꺼냄
+# 3. 꺼낸 요소의 .index를 사용해서 추적하고
+# 4. 해당 위치에서 부터 끝까지 나보다 큰 녀석들의 정보를 ans리스트를 생성해서 담고
+# 5. ans 리스트에서 max값을 출력 하면 된다.
+
+import sys
+
+N=int(sys.stdin.readline())   # 자료의 개수
+Field = list(map(int, sys.stdin.readline().split()))    # 리스트 입력 받음
+Arr=sorted(Field)    # 정렬된 리스트를 담는다.
+ans=[]
+
+for A in Arr:
+    king = Field.index(A)    # 해당 위치의 인덱스를 king에 넣는다.
+    cnt=1
+    now=A
     
+    for i in range(king, N):   # 해당 인덱스 부터 끝까지 검사를 실행한다.
+        if now < Field[i]:
+            cnt+=1
+            now=Field[i]
+    ans.append(cnt)
+
+
+#print(ans, '정답을 출력 한다.')
+print(max(ans))
+
+'''
+반례 1
+5
+1 10 2 9 3 8
+답 4인데 2 나옴 
+
+왜냐? 첫번쨰 시행에서 1,10 비교하면 cnt+1되고, now=10이 된다
+그뒤로는 전부 10보다 작게 나오므로, 당연히 안되는 것!
+'''
