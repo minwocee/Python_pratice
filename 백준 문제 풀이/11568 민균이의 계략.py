@@ -25,6 +25,8 @@ Field  0  8  9  1  2  10      #맨 앞에는 0이 있다고 생각
 DP     0  1  2  1  2  3
 
 '''
+
+'''
 # 어떻게 이런 생각을 사람들은 할수 있는 거지?
 
 # 1번 방법을 구현 한다.
@@ -54,3 +56,31 @@ for O in range(1,N+1):    # 바깥값을 고정치
 print(dp)
 
 #https://namu.wiki/w/%EC%B5%9C%EC%9E%A5%20%EC%A6%9D%EA%B0%80%20%EB%B6%80%EB%B6%84%20%EC%88%98%EC%97%B4#s-3.1
+
+'''
+
+
+# 참고:  https://sodehdt-ldkt.tistory.com/148
+
+# LIS: 최장 길이 연속 수열, DP를 활용하는 가장 일반적인 풀이
+# N^2
+
+import sys
+
+N=int(sys.stdin.readline())
+Field = list(map(int, sys.stdin.readline().split()))
+
+DP = [1 for _ in range(N)]   # 전체 dp를 1로 초기화, 넓이는 자료의 개수와 동일
+
+
+for i in range(1,N):
+    max_value = 0
+    for j in range(i):
+        if Field[j] < Field[i]:    # 선택한 원소의 이전 까지의 배열 < 선택한 원소
+            max_value = max(max_value, DP[j])   # max_value 는 0,1,2,3 이렇게 증가한다.
+            
+        
+    DP[i] = max_value + 1    # 이전의 dp 테이블에서 +1 해주면 된다.
+
+print(max(DP))
+
