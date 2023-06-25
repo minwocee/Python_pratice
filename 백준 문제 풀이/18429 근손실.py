@@ -20,7 +20,7 @@ for i in range(날짜수):
 경우의수 = list(permutations(루틴, 날짜수))
 
 cnt = 0
-
+ 
 
 def counter(text):
     summ = 0
